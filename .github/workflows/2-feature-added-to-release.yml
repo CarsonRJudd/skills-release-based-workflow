@@ -34,6 +34,10 @@ jobs:
     name: On feature added
     needs: get_current_step
 
+     if: >-
+      ${{ !github.event.repository.is_template
+          && needs.get_current_step.outputs.current_step == 2 }}
+
     # We'll run Ubuntu for performance instead of Mac or Windows.
     runs-on: ubuntu-latest
 
